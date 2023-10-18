@@ -1,0 +1,9 @@
+const { get_question_list, parser } = require('./helper_functions');
+
+exports.fetchAllQuestions = async (req, res) => {
+    const question_list = await get_question_list();
+    for (let i = 0; i < question_list.length; i++) {
+      await parser(question_list[i]);
+      console.log(`Fetched ${i + 1}/${question_list.length} questions`);
+    }
+};
